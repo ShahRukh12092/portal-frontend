@@ -1,0 +1,79 @@
+.numbers {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  color: #fff;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.numb {
+  background-color: rgb(32, 165, 32);
+  display: block;
+  width: 300px;
+  height: 90px;
+  margin-top: 10px;
+  padding: 2px;
+  border-radius: 5px;
+}
+p {
+  margin-top: 10px;
+}
+.numb p,
+.counter {
+  display: flex;
+  justify-content: center;
+}
+.counter {
+  color: rgb(255, 235, 42);
+  font-weight: 900;
+  font-size: x-large;
+}
+p {
+  font-weight: 100;
+}
+.numb:hover {
+  box-shadow: 2px 2px greenyellow;
+}
+
+@media screen and (max-width: 540px) {
+  .numb {
+    width: 160px;
+  }
+  footer {
+    flex-direction: column;
+  }
+}
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.PRESENCE {
+  font-size: 22px;
+  font-weight: bolder;
+  margin-left: 3%;
+  color: rgb(32, 165, 32);
+}
+.flogo {
+  width: 200px;
+}
+footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+i {
+  font-size: 25px;
+  margin-right: 0%;
+}
+.right {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: 3%;
+  margin-left: 3%;
+}
