@@ -125,12 +125,6 @@ const SideChats = () => {
       display={{ xs: SelectedChat ? "none" : "flex", md: "flex" }}
       flexDirection="column"
       flex={{ xs: SelectedChat ? "none" : "1", md: "0.35" }}
-      // alignItems={"center"}
-      //bgcolor="#f6f6f6;"
-      // width={{ xs: "100%", md: "32%" }}
-      //height="100"
-      // border={2}
-      //borderRadius={4}
     >
       <Box
         display="flex"
