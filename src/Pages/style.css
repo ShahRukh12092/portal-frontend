@@ -1,0 +1,14 @@
+.hover:hover {
+  font-weight: bolder;
+}
+.hover {
+  cursor: pointer;
+}
+
+.red:hover {
+  color: red;
+}
+
+.green:hover {
+  color: green;
+}
