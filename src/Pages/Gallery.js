@@ -14,7 +14,7 @@ const Gallery = () => {
   const [gernal, setgernal] = useState(true);
   const [selected, setselected] = useState("");
   const [selectedValue, setselectedValue] = useState("");
-
+  var data = {};
   const Reset = () => {
     setsearchdata("");
     setYear("");
@@ -27,6 +27,13 @@ const Gallery = () => {
     setadvancespply(false);
   };
   const advancapply = () => {
+    data = {
+      name: `${searchdata}`,
+      year: `${year}`,
+      department: `${department}`,
+      status: `${currentSatus}`,
+      salary: `${Salary}`,
+    };
     setadvancespply(!advanceapply);
   };
   const handlesearchdata = (value) => {
