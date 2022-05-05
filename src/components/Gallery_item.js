@@ -7,7 +7,7 @@ const Gallery_item = () => {
     <Box
       bgcolor={"white"}
       width={"230px"}
-      height={"40vh"}
+      height={"45vh"}
       m={1}
       borderRadius={1.5}
       boxShadow={1}

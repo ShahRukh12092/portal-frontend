@@ -3,6 +3,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import { TextField, Typography, MenuItem } from "@mui/material";
 import "./style.css";
+import Galleryitem from "../components/Gallery_item";
+// import DualRing from "../components/DualRing";
+// import Jobcard from "../components/Jobcard";
 const Gallery = () => {
   const [advanceShow, setAdvanceShow] = useState(false);
   const [advanceapply, setadvancespply] = useState(false);
@@ -24,6 +27,7 @@ const Gallery = () => {
   };
   const showadvance = () => {
     setAdvanceShow(!advanceShow);
+    Reset();
     setadvancespply(false);
   };
   const advancapply = () => {
@@ -126,16 +130,13 @@ const Gallery = () => {
         <Box
           style={{
             display: "flex",
-            width: advanceShow ? "12vw" : "20vw",
+            width: advanceShow ? "12vw" : "18vw",
           }}
         >
           <TextField
-            required
-            id="search"
             label="Search the user"
             value={searchdata}
             onChange={(e) => handlesearchdata(e.target.value)}
-            autoFocus
             sx={{ width: "95%" }}
             placeholder="Search the user"
           />
@@ -262,11 +263,12 @@ const Gallery = () => {
           )}
         </Typography>
       </Box>
-      <hr></hr>
+      <hr />
       {advanceapply && (
         <Box height={"7vh"} bgcolor="red">
           {searchdata} {year} {department} {currentSatus}
           {Salary}
+          {data.name}
         </Box>
       )}
       {!advanceapply && (
@@ -274,6 +276,16 @@ const Gallery = () => {
           {gernal ? "GERNAL" : ` ${selected} = ${selectedValue}`}
         </Typography>
       )}
+
+      <Box
+        //bgcolor={"lightblue"}
+        m={2}
+        display="flex"
+        justifyContent={"space-between"}
+        flexWrap="wrap"
+      >
+        <Galleryitem />
+      </Box>
     </>
   );
 };
