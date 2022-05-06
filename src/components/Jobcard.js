@@ -14,10 +14,13 @@ const Jobcard = () => {
       borderRadius={6}
       m={1}
       overflow="hidden"
-      boxShadow={2}
+      boxShadow={"1px 1px 1px"}
+      bgcolor="white"
       sx={{
+        transition: ".5s",
         "&:hover": {
           transform: "scale(1.03)",
+          boxShadow: "2px 2px 2px",
         },
       }}
     >

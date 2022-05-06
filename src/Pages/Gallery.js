@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import { TextField, Typography, MenuItem } from "@mui/material";
 import "./style.css";
 import Galleryitem from "../components/Gallery_item";
-// import DualRing from "../components/DualRing";
-// import Jobcard from "../components/Jobcard";
+import DualRing from "../components/DualRing";
+import Jobcard from "../components/Jobcard";
 const Gallery = () => {
   const [advanceShow, setAdvanceShow] = useState(false);
   const [advanceapply, setadvancespply] = useState(false);
@@ -115,7 +115,7 @@ const Gallery = () => {
     }
   };
   return (
-    <>
+    <Box width={"100%"} height={"88vh"} bgcolor="#eeeeef">
       <CssBaseline />
       <Box
         textAlign={"center"}
@@ -285,8 +285,14 @@ const Gallery = () => {
         flexWrap="wrap"
       >
         <Galleryitem />
+        <Galleryitem />
+        <Galleryitem />
+        <Galleryitem />
+        <Galleryitem />
+        <Galleryitem />
+        {/* <Jobcard /> */}
       </Box>
-    </>
+    </Box>
   );
 };
 

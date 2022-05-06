@@ -9,18 +9,22 @@ const Gallery_item = () => {
       width={"230px"}
       height={"45vh"}
       m={1}
-      borderRadius={1.5}
-      boxShadow={1}
+      borderRadius={2}
+      boxShadow={"1px 1px 1px"}
       position="relative"
       border={1}
       borderTop={"none"}
       sx={{
-        "&:hover": {},
+        transition: ".5s",
+        "&:hover": {
+          transform: "scale(1.03)",
+          boxShadow: "2px 2px 2px",
+        },
       }}
     >
       <Box height={"20%"} bgcolor={"gray"} borderRadius={"inherit"}></Box>
       <Avatar
-        src="public/logo512.png"
+        src={`${process.env.PUBLIC_URL}/Images/avatar.png`}
         //alt="SRK"
         sx={{
           width: 90,
@@ -28,6 +32,7 @@ const Gallery_item = () => {
           position: "absolute",
           top: "5%",
           left: "30%",
+          verticalAlign: "middle",
         }}
       />
       <Box

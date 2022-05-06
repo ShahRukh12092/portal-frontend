@@ -16,7 +16,7 @@ const Index = () => {
   const [Chats, setChats] = useState([]);
 
   return (
-    <>
+    <div>
       <contex.Provider
         value={{
           user,
@@ -39,7 +39,7 @@ const Index = () => {
           {/* <Route path="/register" element={<signup />} /> */}
         </Routes>
       </contex.Provider>{" "}
-    </>
+    </div>
   );
 };
 
