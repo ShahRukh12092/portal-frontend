@@ -1,0 +1,46 @@
+.card {
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
+  position: relative;
+  border-radius: 2em;
+  background: white;
+}
+
+.title {
+  z-index: 1;
+}
+.title h2 {
+  font-size: 1.45rem;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.abstact {
+  bottom: 0;
+  margin-bottom: 15px;
+  padding: 5px;
+  z-index: 1;
+  position: absolute;
+  font-weight: 900;
+}
+figure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: 0% 0%;
+  z-index: 2;
+  transition: all 800ms ease-in-out;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2em;
+}
+.card:hover figure {
+  top: -2%;
+  left: -2%;
+  transform: scale(0.4);
+}

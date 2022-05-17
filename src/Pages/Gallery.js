@@ -6,6 +6,7 @@ import "./style.css";
 import Galleryitem from "../components/Gallery_item";
 import DualRing from "../components/DualRing";
 import Jobcard from "../components/Jobcard";
+import Startup from "../components/Startup";
 const Gallery = () => {
   const [advanceShow, setAdvanceShow] = useState(false);
   const [advanceapply, setadvancespply] = useState(false);
@@ -115,7 +116,7 @@ const Gallery = () => {
     }
   };
   return (
-    <Box width={"100%"} height={"88vh"} bgcolor="#eeeeef">
+    <Box>
       <CssBaseline />
       <Box
         textAlign={"center"}
@@ -284,13 +285,21 @@ const Gallery = () => {
         justifyContent={"space-between"}
         flexWrap="wrap"
       >
+        {/* <Galleryitem />
         <Galleryitem />
         <Galleryitem />
         <Galleryitem />
         <Galleryitem />
-        <Galleryitem />
-        <Galleryitem />
+        <Galleryitem /> */}
         {/* <Jobcard /> */}
+        <Startup />
+        <Startup />
+        <Startup />
+        <Startup />
+        <Startup />
+        <Startup />
+        <Startup />
+        <Startup />
       </Box>
     </Box>
   );

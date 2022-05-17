@@ -52,7 +52,7 @@ const Home = () => {
         <div className="left">
           {" "}
           <h2 style={{ color: "white" }}>Follow us</h2>
-          <i class="fab fa-youtube" style={{ color: "red" }}></i>
+          <i class="fab fa-youtube" style={{ color: "red" }} />
           <i class="fab fa-twitter" style={{ color: "blue" }} />
           <i
             class="fab fa-facebook-square"

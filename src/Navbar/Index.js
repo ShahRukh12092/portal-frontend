@@ -7,7 +7,8 @@ import Jobs from "../Pages/Jobs";
 import Home from "../Pages/Home";
 import Navbar from "./Navbar";
 import Chatpage from "../Pages/Chatpage";
-import signup from "../components/signup";
+import Register from "../Pages/Register";
+
 //import Forgetpassword from "../Components/Forgetpassword";
 export const contex = createContext();
 const Index = () => {
@@ -33,7 +34,7 @@ const Index = () => {
           <Route path="/about" element={<About />} exact />
           <Route path="/jobs" element={<Jobs />} exact />
           <Route path="/gallery" element={<Gallery />} exact />
-          <Route path="/signin" element={<Signin />} exact />
+          <Route path="/signin" element={<Register />} exact />
           {/* <Route path="/forgetpassword" element={<Forgetpassword />} exact /> */}
           <Route path="/chat" element={<Chatpage />} />
           {/* <Route path="/register" element={<signup />} /> */}
