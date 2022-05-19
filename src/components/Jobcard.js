@@ -3,13 +3,14 @@ import { Scale } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import React, { useState } from "react";
 
-const Jobcard = () => {
+const Jobcard = (props) => {
+  const { ele } = props;
   const [readmore, setreadmore] = useState(false);
   let des =
     "Description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with";
   return (
     <Box
-      width={"43%"}
+      width={"30%"}
       border={1}
       borderRadius={6}
       m={1}
@@ -24,19 +25,24 @@ const Jobcard = () => {
         },
       }}
     >
+      {console.log(ele)}
       <Box m={1}>
         <Typography variant="h6" fontWeight={"bolder"}>
-          ROR Developer
+          {ele.title}
         </Typography>
-        <Typography fontStyle={"italic"}>Amrood Labs</Typography>
+        <Typography fontStyle={"italic"}>{ele.company}</Typography>
         <Typography fontStyle={"oblique"}>
           Required experience
           <span style={{ fontWeight: "bold", marginLeft: "3px" }}>
-            Intermadite
+            {ele.Experience}
           </span>
         </Typography>
+
+        {/* <Typography fontStyle={"italic"}>{ele.company}</Typography> */}
         <Typography variant="p">
-          {readmore ? des : `${des.substring(0, 250)}...`}
+          {readmore
+            ? `${ele.Description}`
+            : `${ele.Description.substring(0, 250)}...`}
           <button
             onClick={() => setreadmore(!readmore)}
             style={{

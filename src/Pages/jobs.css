@@ -3,7 +3,10 @@
   flex-wrap: wrap;
   margin: 10px;
   z-index: 1;
+  width: 100vw;
+  height: 100vh;
   justify-content: space-around;
+  flex: wrap;
   /* background-color: blueviolet; */
 }
 .card {
@@ -55,24 +58,15 @@
 
 .jobform {
   position: fixed;
-  top: 48%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(206, 204, 204);
+  background-color: white;
   width: 100%;
   max-width: 55%;
   padding: 15px;
   border-radius: 6px;
-  /* top: 50%;
-  z-index: 2;
-  msargin-left: 50%;
-  width: 300px;
-
-  background-color: aliceblue;
-  /*left: 20%;
-  background-color: white;
-  width: 280px;
-  padding: 10px; */
+  box-shadow: 3px 3px 3px 3px black;
 }
 
 .closebtn {
@@ -176,4 +170,53 @@ textarea::-webkit-scrollbar {
   h3 {
     top: 13%;
   }
+}
+
+.tags {
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0px 5px;
+  border: 1px solid rgb(214, 216, 218);
+  border-radius: 6px;
+}
+
+.tags input {
+  flex: 1;
+  border: none;
+  height: 46px;
+  font-size: 14px;
+  padding: 4px 0 0 0;
+}
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+.tagItem {
+  width: auto;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 8px;
+  font-size: 14px;
+  list-style: none;
+  border-radius: 6px;
+  margin: 0 8px 8px 0;
+  background: rgba(43, 189, 43, 0.9);
+}
+.tagName {
+  font-weight: bold;
+  color: black;
+  margin-right: 5px;
+}
+
+.closetag {
+  margin-top: 2.5px;
 }

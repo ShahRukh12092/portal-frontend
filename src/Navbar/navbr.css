@@ -9,7 +9,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 70px;
+  height: 10vh;
+  width: 100%;
   background-color: rgb(32, 165, 32);
   color: white;
   z-index: 2;

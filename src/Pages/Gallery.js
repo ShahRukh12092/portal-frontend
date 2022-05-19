@@ -291,15 +291,15 @@ const Gallery = () => {
         <Galleryitem />
         <Galleryitem />
         <Galleryitem /> */}
-        {/* <Jobcard /> */}
+        {/* <Jobcard /> <Jobcard /> <Jobcard /> */}
+        {/* <Startup />
         <Startup />
         <Startup />
         <Startup />
         <Startup />
         <Startup />
         <Startup />
-        <Startup />
-        <Startup />
+        <Startup /> */}
       </Box>
     </Box>
   );

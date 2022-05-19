@@ -116,9 +116,9 @@ const Landingpage = () => {
               Sign In
             </Button>
           </Box>
-          {/* <Typography color={"blue"}>
+          <Typography color={"blue"}>
             <Link to="/register">if you have no account</Link>
-          </Typography> */}
+          </Typography>
         </Box>
       </Box>
     </>
