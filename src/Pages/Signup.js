@@ -22,10 +22,12 @@ const Landingpage = () => {
   const [password, setpassword] = useState("");
   //console.log(user);
   const handleSubmit = (event) => {
-    event.preventDefault();
     console.log(email, password);
     if (!email || !password) {
-      toast.error("enter the fields", { position: toast.POSITION.TOP_CENTER });
+      toast.error("enter the fields", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1400,
+      });
       setEmail("");
       setpassword("");
       return;
@@ -42,6 +44,7 @@ const Landingpage = () => {
         setuser(data);
         if (!data.center) {
           sessionStorage.setItem("user", JSON.stringify(data));
+          console.log(data);
         } else {
           sessionStorage.setItem("center", JSON.stringify(data));
         }
@@ -62,14 +65,22 @@ const Landingpage = () => {
 
   return (
     <>
-      <Box>
+      <Box height={"90vh"}>
         <CssBaseline />
         <Box
+          boxShadow={"3px 3px 3px 3px black"}
+          p={2}
+          borderRadius={2}
           sx={{
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center",
+            backgroundColor: "white",
+            width: "fit-content",
+            margin: "30px auto",
           }}
         >
           <Typography component="h1" variant="h3">
@@ -84,6 +95,7 @@ const Landingpage = () => {
               label="Email Address"
               name="email"
               autoFocus
+              type={"email"}
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               placeholder="enter the email"
@@ -101,24 +113,35 @@ const Landingpage = () => {
               value={password}
               placeholder="enter your password"
             />
-            <Button
-              type="submit"
-              fullWidth
+            <Typography
               onClick={handleSubmit}
-              variant="contained"
+              marginLeft="42%"
+              width={"fit-content"}
+              p={1}
+              borderRadius={1}
               sx={{
                 mt: 3,
                 mb: 2,
-                marginRight: "50%",
                 backgroundColor: "green",
+                color: "black",
               }}
             >
-              Sign In
-            </Button>
+              <Button fontWight="bold">Sign In</Button>
+            </Typography>
           </Box>
-          <Typography color={"blue"}>
-            <Link to="/register">if you have no account</Link>
-          </Typography>
+          <Box
+            display={"flex"}
+            justifyContent="space-between"
+            width={"100%"}
+            m={0.5}
+          >
+            <Typography color={"blue"}>
+              <Link to="/forgetPassword">Forget password</Link>
+            </Typography>
+            <Typography color={"blue"}>
+              <Link to="/register">Create account</Link>
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </>

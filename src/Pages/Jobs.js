@@ -27,32 +27,6 @@ const Jobs = (props) => {
   const [Description, setDescription] = useState("");
   const [btn, setbtn] = useState(false);
 
-  // const postjobs = async (e) => {
-  //   e.preventDefault();
-  //   console.log("ff");
-  //   const { title, company, description, posted_by } = job;
-  //   const response = await fetch("/Jobs/postjob", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ title, company, description, posted_by }),
-  //   });
-  //   const n = await response.json();
-  //   if (response.status === 200) {
-  //     setJobs([...jobs, n]);
-  //     // job.title = "";
-  //     // job.description = "";
-  //     // job.posted_by = "";
-  //     // job.company = "";
-  //     // setjob(job);
-  //     // setAddjob(false);
-  //     setjob(s);
-  //   }
-
-  //   console.log(n);
-  // };
-
   const postjob = async () => {
     //alert(` ${title} ${company} ${Experience} ${Description} ${tags}`);
 
@@ -81,22 +55,30 @@ const Jobs = (props) => {
     getdat();
   }, []);
   const getdat = async () => {
+    if (!sessionStorage.getItem("center") && !sessionStorage.getItem("user")) {
+      navigate("/signin");
+    }
+
+    if (sessionStorage.getItem("center")) {
+      console.log("hellllllo");
+      setbtn(true);
+    }
+    if (sessionStorage.getItem("user")) {
+      const data = JSON.parse(sessionStorage.getItem("user"));
+      const { isAlumni } = data;
+      console.log(data);
+      if (isAlumni) {
+        console.log("hello");
+        setbtn(true);
+      }
+    }
+
     const response = await fetch("http://localhost:30001/getjobs", {
       method: "GET",
     });
     const n = await response.json();
     setJobs(n);
-    if (!sessionStorage.getItem("center") && !sessionStorage.getItem("user")) {
-      navigate("/signin");
-    }
-    if (sessionStorage.getItem("center")) {
-      setbtn(true);
-    } else {
-      const user = sessionStorage.getItem("user");
-      if (user.isAlumni) {
-        setbtn(true);
-      }
-    }
+    console.log(jobs);
   };
 
   return (
@@ -106,6 +88,7 @@ const Jobs = (props) => {
         display="flex"
         justifyContent={"space-between"}
         flexWrap="wrap"
+        height={"100vh"}
       >
         {jobs.map((ele) => (
           <Jobcard ele={ele} />
@@ -216,7 +199,7 @@ const Jobs = (props) => {
           </button>
         </div>
       )}
-      {btn && (
+      {btn ? (
         <div
           className="addbtn"
           onClick={() => {
@@ -225,6 +208,8 @@ const Jobs = (props) => {
         >
           <h1 className="plus">+</h1>
         </div>
+      ) : (
+        ""
       )}
     </>
   );

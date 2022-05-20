@@ -9,8 +9,7 @@ import Navbar from "./Navbar";
 import Chatpage from "../Pages/Chatpage";
 import Register from "../Pages/Register";
 import AddStudent from "../components/AddStudent.js";
-
-//import Forgetpassword from "../Components/Forgetpassword";
+import Forgetpassword from "../Pages/Forgetpassword";
 export const contex = createContext();
 const Index = () => {
   const [SelectedChat, setSelectedChat] = useState();
@@ -38,6 +37,7 @@ const Index = () => {
           <Route path="/signin" element={<Signin />} exact />
           <Route path="/addStudent" element={<AddStudent />} exact />
           <Route path="/chat" element={<Chatpage />} />
+          <Route path="/forgetPassword" element={<Forgetpassword />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </contex.Provider>{" "}

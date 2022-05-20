@@ -2,11 +2,12 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { Avatar, Typography } from "@mui/material";
 
-const Gallery_item = () => {
+const Gallery_item = (props) => {
+  const { data } = props;
   return (
     <Box
       bgcolor={"white"}
-      width={"230px"}
+      width={"260px"}
       height={"45vh"}
       m={1}
       borderRadius={2}
@@ -27,28 +28,41 @@ const Gallery_item = () => {
         src={`${process.env.PUBLIC_URL}/Images/avatar.png`}
         //alt="SRK"
         sx={{
-          width: 90,
-          height: 90,
+          width: "80px",
+          height: "80px",
           position: "absolute",
-          top: "5%",
-          left: "30%",
-          verticalAlign: "middle",
+          top: "2%",
+          left: "36%",
         }}
       />
       <Box
-        mt={"56px"}
+        mt={"30px"}
         display="flex"
         justifyContent={"center"}
         alignItems={"center"}
         flexDirection="column"
       >
         <Typography variant="h6" fontWeight={"bolder"}>
-          Shah Rukh khan
+          {data.name}
         </Typography>
-        <Typography variant="p" fontStyle={"italic"}>
-          Software Enginer
+        <Typography variant="p" fontStyle={"italic"} mt={0.5}>
+          {data.status === "Free"
+            ? "Free"
+            : data.status === "Job"
+            ? `${data.designation}`
+            : data.status === "Study"
+            ? `${data.degree}`
+            : `${data.designation} / ${data.degree} `}
         </Typography>
-        <Typography variant="p">Amrood Lab</Typography>
+        <Typography variant="p" mt={0.5}>
+          {data.status === "Free"
+            ? ""
+            : data.status === "Job"
+            ? `${data.company}`
+            : data.status === "Study"
+            ? `${data.uni}`
+            : `${data.company} / ${data.uni}`}
+        </Typography>
         <Typography
           fontWeight={"bold"}
           border={2}

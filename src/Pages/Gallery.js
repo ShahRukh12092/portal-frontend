@@ -7,6 +7,7 @@ import Galleryitem from "../components/Gallery_item";
 import DualRing from "../components/DualRing";
 import Jobcard from "../components/Jobcard";
 import Startup from "../components/Startup";
+import { useEffect } from "react";
 const Gallery = () => {
   const [advanceShow, setAdvanceShow] = useState(false);
   const [advanceapply, setadvancespply] = useState(false);
@@ -18,7 +19,27 @@ const Gallery = () => {
   const [gernal, setgernal] = useState(true);
   const [selected, setselected] = useState("");
   const [selectedValue, setselectedValue] = useState("");
+  const [users, setusers] = useState([]);
+  const [searchnames, setsearchnames] = useState([]);
   var data = {};
+
+  useEffect(() => {
+    getdata();
+    console.log(users);
+  }, []);
+  const getdata = async () => {
+    try {
+      const response = await fetch("http://localhost:30001/getuser", {
+        method: "GET",
+      });
+      const n = await response.json();
+      console.log(n);
+      setusers(n);
+      console.log(users);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const Reset = () => {
     setsearchdata("");
     setYear("");
@@ -70,7 +91,21 @@ const Gallery = () => {
       setselectedValue(value);
     }
   };
-
+  const findsearchdata = async () => {
+    try {
+      const data = await fetch(
+        `http://localhost:30001/Search?search=${searchdata}`,
+        {
+          method: "GET",
+        }
+      );
+      const result = await data.json();
+      console.log(result);
+      setsearchnames(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handledepartment = (value) => {
     if (advanceShow) {
       setdepartment(value);
@@ -81,7 +116,7 @@ const Gallery = () => {
       setSalary("");
       setdepartment(value);
       setgernal(false);
-      setselected("Department");
+      setselected("department");
       setselectedValue(value);
     }
   };
@@ -145,6 +180,7 @@ const Gallery = () => {
             ""
           ) : (
             <i
+              onClick={findsearchdata}
               className="fas fa-search"
               style={{
                 marginLeft: "8px",
@@ -181,25 +217,11 @@ const Gallery = () => {
           select
           sx={{ width: "16.3%" }}
         >
-          <MenuItem value="EE">Electrical Engineer </MenuItem>
+          <MenuItem value="EE">Electrical Engineer</MenuItem>
           <MenuItem value="CS">Computer Science</MenuItem>
           <MenuItem value="BBA">Business Administration</MenuItem>
           <MenuItem value="MAth">Mathematical</MenuItem>
         </TextField>{" "}
-        <TextField
-          required
-          id="search"
-          label="Select Department"
-          value={department}
-          onChange={(e) => handledepartment(e.target.value)}
-          select
-          sx={{ width: "17%" }}
-        >
-          <MenuItem value="EE">Electrical Engineer </MenuItem>
-          <MenuItem value="CS">Computer Science</MenuItem>
-          <MenuItem value="BBA">Business Administration</MenuItem>
-          <MenuItem value="MAth">Mathematical</MenuItem>
-        </TextField>
         <TextField
           label="current status"
           value={currentSatus}
@@ -212,7 +234,7 @@ const Gallery = () => {
           <MenuItem value="Job">Job</MenuItem>
           <MenuItem value="Study">Study</MenuItem>
           <MenuItem value="Both">job & studies</MenuItem>
-          <MenuItem value="free">free</MenuItem>
+          <MenuItem value="Free">free</MenuItem>
         </TextField>{" "}
         <TextField
           label="Salary"
@@ -265,7 +287,7 @@ const Gallery = () => {
         </Typography>
       </Box>
       <hr />
-      {advanceapply && (
+      {/* {advanceapply && (
         <Box height={"7vh"} bgcolor="red">
           {searchdata} {year} {department} {currentSatus}
           {Salary}
@@ -276,31 +298,69 @@ const Gallery = () => {
         <Typography>
           {gernal ? "GERNAL" : ` ${selected} = ${selectedValue}`}
         </Typography>
-      )}
+      )} */}
 
-      <Box
-        //bgcolor={"lightblue"}
-        m={2}
-        display="flex"
-        justifyContent={"space-between"}
-        flexWrap="wrap"
-      >
-        {/* <Galleryitem />
-        <Galleryitem />
-        <Galleryitem />
-        <Galleryitem />
-        <Galleryitem />
-        <Galleryitem /> */}
-        {/* <Jobcard /> <Jobcard /> <Jobcard /> */}
-        {/* <Startup />
-        <Startup />
-        <Startup />
-        <Startup />
-        <Startup />
-        <Startup />
-        <Startup />
-        <Startup /> */}
-      </Box>
+      {gernal && (
+        <Box
+          //bgcolor={"lightblue"}
+          m={2}
+          display="flex"
+          justifyContent={"space-between"}
+          flexWrap="wrap"
+          height={"100vh"}
+        >
+          {users &&
+            users.map((data, index) => <Galleryitem key={index} data={data} />)}
+        </Box>
+      )}
+      {!gernal && (
+        <Box
+          //bgcolor={"lightblue"}
+          m={2}
+          display="flex"
+          justifyContent={"space-between"}
+          flexWrap="wrap"
+          height={"100vh"}
+        >
+          {selected === "Year"
+            ? users
+                .filter((a) => {
+                  if (a.passingyear === `${selectedValue}`) {
+                    return a;
+                  }
+                })
+                .map((data, index) => <Galleryitem key={index} data={data} />)
+            : selected === "department"
+            ? users
+                .filter((a) => {
+                  if (a.department === `${selectedValue}`) {
+                    return a;
+                  }
+                })
+                .map((data, index) => <Galleryitem key={index} data={data} />)
+            : selected === "Salary"
+            ? users
+                .filter((a) => {
+                  if (a.salary === `${selectedValue}`) {
+                    return a;
+                  }
+                })
+                .map((data, index) => <Galleryitem key={index} data={data} />)
+            : selected === "CURREnt Status"
+            ? users
+                .filter((a) => {
+                  if (a.status === `${selectedValue}`) {
+                    return a;
+                  }
+                })
+                .map((data, index) => <Galleryitem key={index} data={data} />)
+            : searchnames
+            ? searchnames.map((data, index) => (
+                <Galleryitem key={index} data={data} />
+              ))
+            : ""}
+        </Box>
+      )}
     </Box>
   );
 };

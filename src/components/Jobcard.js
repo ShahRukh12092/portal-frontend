@@ -1,10 +1,11 @@
 import { Box } from "@material-ui/core";
-import { Scale } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import React, { useState } from "react";
 
 const Jobcard = (props) => {
   const { ele } = props;
+  const { skills } = ele;
+  console.log(skills);
   const [readmore, setreadmore] = useState(false);
   let des =
     "Description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with";
@@ -16,6 +17,7 @@ const Jobcard = (props) => {
       m={1}
       overflow="hidden"
       boxShadow={"1px 1px 1px"}
+      // height="250px"
       bgcolor="white"
       sx={{
         transition: ".5s",
@@ -37,12 +39,20 @@ const Jobcard = (props) => {
             {ele.Experience}
           </span>
         </Typography>
+        <Typography fontStyle={"oblique"}>
+          Required Skills
+          {skills.map((data, index) => (
+            <span key={index} style={{ fontWeight: "bold", marginLeft: "3px" }}>
+              {data}
+            </span>
+          ))}
+        </Typography>
 
         {/* <Typography fontStyle={"italic"}>{ele.company}</Typography> */}
         <Typography variant="p">
           {readmore
             ? `${ele.Description}`
-            : `${ele.Description.substring(0, 250)}...`}
+            : `${ele.Description.substring(0, 170)}...`}
           <button
             onClick={() => setreadmore(!readmore)}
             style={{

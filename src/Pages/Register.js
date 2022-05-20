@@ -8,13 +8,17 @@ import {
   MenuItem,
   TextField,
 } from "@material-ui/core";
+import { toast } from "react-toastify";
 import { FormHelperText } from "@material-ui/core";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { RadioGroup } from "@mui/material";
 import React from "react";
 import Radio from "@mui/material/Radio";
 import * as Yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+toast.configure();
 const Register = () => {
+  let navigate = useNavigate();
   const initialValues = {
     name: "",
     cnic: "",
@@ -31,6 +35,7 @@ const Register = () => {
     city: "",
     degree: "",
     uni: "",
+    salary: "",
   };
   const Onsubmit = async (values, props) => {
     console.log(values);
@@ -49,6 +54,7 @@ const Register = () => {
       city,
       degree,
       uni,
+      salary,
     } = values;
     try {
       //alert(typeof Skills);
@@ -69,17 +75,23 @@ const Register = () => {
           filed,
           designation,
           company,
+          salary,
           city,
           degree,
           uni,
         }),
       });
       const n = await response.json();
-      alert(JSON.stringify(n));
+      props.resetForm();
+      navigate(`/signin`);
     } catch (error) {
       console.log(error);
+      toast.error("invalid credentials", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2000,
+      });
     }
-    alert(JSON.stringify(values));
+    props.resetForm();
   };
 
   const validationSchema = Yup.object().shape({
@@ -116,16 +128,16 @@ const Register = () => {
   });
 
   return (
-    <Box display={"flex"} justifyContent={"center"}>
+    <Box display={"flex"} justifyContent={"center"} height={"100vh"}>
       <Box
         p={1}
-        boxShadow={2}
+        // boxShadow={2}
         bgcolor={"white"}
         mt={"3%"}
         borderRadius={5}
         width="50%"
         position={"sticky"}
-        // boxShadow={"3px 3px 3px 3px black"}
+        boxShadow={"3px 3px 3px 3px black"}
         height={"fit-content"}
       >
         <Formik
@@ -135,7 +147,7 @@ const Register = () => {
         >
           {(props) => (
             <Form>
-              {console.log(props.values)}
+              {console.log(props)}
               <Grid container spacing={2} sx={{ marginTop: "30px" }}>
                 <Grid item xs={12} sm={6}>
                   <Field
@@ -331,6 +343,7 @@ const Register = () => {
                         <MenuItem value="HR">HR</MenuItem>
                         <MenuItem value="Marketing">Marketing</MenuItem>
                         <MenuItem value="Finance">Finance</MenuItem>
+                        <MenuItem value="Mannagement">Mannagement</MenuItem>
                         <MenuItem value="other">Other</MenuItem>
                       </Field>
                     </Grid>
@@ -352,12 +365,16 @@ const Register = () => {
                         </MenuItem>
                         <MenuItem value="principal Software Engineer">
                           principal Software Engineer
+                        </MenuItem>{" "}
+                        <MenuItem value="Project Manager">
+                          Project Manager
                         </MenuItem>
                         <MenuItem value="ML engineer">ML engineer</MenuItem>
                         <MenuItem value="Secuirty Engineer">
                           Secuirty Engineer
                         </MenuItem>
                         <MenuItem value="Govt Employee">Govt Employee</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
                       </Field>
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -381,6 +398,21 @@ const Register = () => {
                         variant="outlined"
                         placeholder="Enter the City"
                       />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Select Salary"
+                        select
+                        fullWidth
+                        name="salary"
+                        variant="outlined"
+                      >
+                        <MenuItem value="A">Less than 50K</MenuItem>
+                        <MenuItem value="B">50k to 75K</MenuItem>
+                        <MenuItem value="C">75k to 100K</MenuItem>
+                        <MenuItem value="D">More than 100k</MenuItem>
+                      </Field>
                     </Grid>
                   </>
                 )}{" "}
@@ -428,14 +460,14 @@ const Register = () => {
                         //required
                         variant="outlined"
                       >
-                        <MenuItem value="Front End Deveolper">
-                          Front End Deveolper
+                        <MenuItem value="Front End Developer">
+                          Front End Developer
                         </MenuItem>
-                        <MenuItem value="Back End Deveolper">
-                          Back End Deveolper
+                        <MenuItem value="Back End Developer">
+                          Back End Developer
                         </MenuItem>
-                        <MenuItem value="Full Stack Deveolper">
-                          Full Stack Deveolper
+                        <MenuItem value="Full Stack Developer">
+                          Full Stack Developer
                         </MenuItem>
                         <MenuItem value="UX/UI Designer">
                           UX/UI Designer
@@ -450,6 +482,7 @@ const Register = () => {
                         <MenuItem value="HR">HR</MenuItem>
                         <MenuItem value="Marketing">Marketing</MenuItem>
                         <MenuItem value="Finance">Finance</MenuItem>
+                        <MenuItem value="Mannagement">Mannagement</MenuItem>
                         <MenuItem value="other">Other</MenuItem>
                       </Field>
                     </Grid>
@@ -476,7 +509,11 @@ const Register = () => {
                         <MenuItem value="Secuirty Engineer">
                           Secuirty Engineer
                         </MenuItem>
+                        <MenuItem value="Project Manager">
+                          Project Manager
+                        </MenuItem>
                         <MenuItem value="Govt Employee">Govt Employee</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
                       </Field>
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -501,6 +538,21 @@ const Register = () => {
                         placeholder="Enter the City"
                       />
                     </Grid>{" "}
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Select Salary"
+                        select
+                        fullWidth
+                        name="salary"
+                        variant="outlined"
+                      >
+                        <MenuItem value="A">Less than 50K</MenuItem>
+                        <MenuItem value="B">50k to 75K</MenuItem>
+                        <MenuItem value="C">75k to 100K</MenuItem>
+                        <MenuItem value="D">More than 100k</MenuItem>
+                      </Field>
+                    </Grid>
                     <Grid item xs={12} sm={6}>
                       <Field
                         as={TextField}
