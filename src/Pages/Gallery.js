@@ -51,6 +51,7 @@ const Gallery = () => {
     setAdvanceShow(!advanceShow);
     Reset();
     setadvancespply(false);
+    setgernal(true);
   };
   const advancapply = () => {
     data = {
